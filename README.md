@@ -38,18 +38,18 @@ Mobilpay comes with a service provider for Laravel. You'll need to add it to you
 Open `config/app.php` and find the `providers` key. Add `MobilpayServiceProvider` to the array.
 
 ```php
-	...
-	Adrianbarbos\Mobilpay\MobilpayServiceProvider::class,
-	...
+...
+Adrianbarbos\Mobilpay\MobilpayServiceProvider::class,
+...
 ```
 
 Add the required aliases to the list of class aliases in the same file.
 
 ```php
-	...
-	'Omnipay' => Barryvdh\Omnipay\Facade::class,
-	'Mobilpay'	=> Adrianbarbos\Mobilpay\Mobilpay::class,
-	...
+...
+'Omnipay' => Barryvdh\Omnipay\Facade::class,
+'Mobilpay'	=> Adrianbarbos\Mobilpay\Mobilpay::class,
+...
 ```
 
 Publish config.
@@ -65,57 +65,55 @@ php artisan vendor:publish --provider="Adrianbarbos\Mobilpay\MobilpayServiceProv
 
 
 ```php
-	// controller function
+// controller function
 
-	Mobilpay::setOrderId(1)
-	                ->setAmount('10.00')
-	                ->setDetails('Some details')
-	                ->purchase();
-	                
+Mobilpay::setOrderId(1)
+                ->setAmount('10.00')
+                ->setDetails('Some details')
+                ->purchase();
 ```
 
 ### Handle Reponse
 
 
 ```php
-	// controller function
+// controller function
 
-	$response = Mobilpay::response();
+$response = Mobilpay::response();
 
-    switch($response->getMessage())
-    {
-        case 'confirmed_pending': // transaction is pending review. After this is done, a new IPN request will be sent with either confirmation or cancellation
+switch($response->getMessage())
+{
+    case 'confirmed_pending': // transaction is pending review. After this is done, a new IPN request will be sent with either confirmation or cancellation
 
-            //update DB, SET status = "pending"
+        //update DB, SET status = "pending"
 
-            break;
-        case 'paid_pending': // transaction is pending review. After this is done, a new IPN request will be sent with either confirmation or cancellation
+        break;
+    case 'paid_pending': // transaction is pending review. After this is done, a new IPN request will be sent with either confirmation or cancellation
 
-            //update DB, SET status = "pending"
+        //update DB, SET status = "pending"
 
-            break;
-        case 'paid': // transaction is pending authorization. After this is done, a new IPN request will be sent with either confirmation or cancellation
+        break;
+    case 'paid': // transaction is pending authorization. After this is done, a new IPN request will be sent with either confirmation or cancellation
 
-            //update DB, SET status = "open/preauthorized"
+        //update DB, SET status = "open/preauthorized"
 
-            break;
-        case 'confirmed': // transaction is finalized, the money have been captured from the customer's account
+        break;
+    case 'confirmed': // transaction is finalized, the money have been captured from the customer's account
 
-            //update DB, SET status = "confirmed/captured"
+        //update DB, SET status = "confirmed/captured"
 
-            break;
-        case 'canceled': // transaction is canceled
+        break;
+    case 'canceled': // transaction is canceled
 
-            //update DB, SET status = "canceled"
+        //update DB, SET status = "canceled"
 
-            break;
-        case 'credit': // transaction has been refunded
+        break;
+    case 'credit': // transaction has been refunded
 
-            //update DB, SET status = "refunded"
+        //update DB, SET status = "refunded"
 
-            break;
-    }
-	                
+        break;
+}	                
 ```
 
 # Options
@@ -123,87 +121,87 @@ php artisan vendor:publish --provider="Adrianbarbos\Mobilpay\MobilpayServiceProv
 ### Order id
 
 ```php
-	/**
-     * @param $value string
-     * @return $this
-     */
+/**
+ * @param $value string
+ * @return $this
+ */
 
-	public function setOrderId($value)
+public function setOrderId($value)
 ```
 
 ### Amount
 
 ```php
-	/**
-     * @param $value string
-     * @return $this
-     */
+/**
+ * @param $value string
+ * @return $this
+ */
 
-	public function setAmount($value)
+public function setAmount($value)
 ```
 
 ### Currency
 
 ```php
-	/**
-     * @param $value string
-     * @return $this
-     */
+/**
+ * @param $value string
+ * @return $this
+ */
 
-	public function setCurrency($value)
+public function setCurrency($value)
 ```
 
 ### Details
 
 ```php
-	/**
-     * @param $value string
-     * @return $this
-     */
+/**
+ * @param $value string
+ * @return $this
+ */
 
-	public function setDetails($value)
+public function setDetails($value)
 ```
 
 ### Confirm Url
 
 ```php
-	/**
-     * @param $value string
-     * @return $this
-     */
+/**
+ * @param $value string
+ * @return $this
+ */
 
-	public function setConfirmUrl($value)
+public function setConfirmUrl($value)
 ```
 
 ### Return Url
 
 ```php
-	/**
-     * @param $value string
-     * @return $this
-     */
+/**
+ * @param $value string
+ * @return $this
+ */
 
-	public function setReturnUrl($value)
+public function setReturnUrl($value)
 ```
 
 ### Test Mode
 
 ```php
-	/**
-     * @param $value boolean
-     * @return $this
-     */
+/**
+ * @param $value boolean
+ * @return $this
+ */
 
-	public function setTestMode($value)
+public function setTestMode($value)
 ```
 
 ### Additional Params
 
 ```php
-	/**
-     * @param $value array
-     * @return $this
-     */
+/**
+ * @param $value array
+ * @return $this
+ */
 
-	public function setAdditionalParams($value)
+public function setAdditionalParams($value)
 ```
