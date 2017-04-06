@@ -10,7 +10,7 @@ class MobilpayGateway {
 
     use DataTrait;
 
-    function __construct() {
+    public function __construct() {
         $this->initData();
     }
 
