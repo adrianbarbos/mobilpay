@@ -35,7 +35,7 @@ Add Laravel Localization to your `composer.json` file.
 }
 ```
 
-Run `composer install` to get the latest version of the package.
+Run `composer update` to get the latest version of the package.
 
 ### Laravel
 
