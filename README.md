@@ -32,7 +32,7 @@ Add Laravel Localization to your `composer.json` file.
     "require": {
         "barryvdh/laravel-omnipay": "0.2.*@dev",
         "business-mastery/omnipay-mobilpay": "~1.0",
-        "adrianbarbos/mobilpay": "~1.0"
+        "adrianbarbos/mobilpay": "1.0.1"
     }
 }
 ```
