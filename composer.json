@@ -1,0 +1,19 @@
+{
+    "name": "adrianbarbos/mobilpay",
+    "description": "Laravel 5 mobilpay wrapper around omnipay with omnipay-mobilpay driver",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "adrianbarbos",
+            "email": "ady.barbos@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "5.0.* || 5.1.* || 5.2.* || 5.3.* || 5.4.*",
+        "barryvdh/laravel-omnipay": "0.2.*@dev",
+        "business-mastery/omnipay-mobilpay": "~1.0"
+    }
+}
