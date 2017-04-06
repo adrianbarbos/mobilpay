@@ -30,7 +30,7 @@ Add Laravel Localization to your `composer.json` file.
 ```json
 {
     "require": {
-        "barryvdh/laravel-omnipay": "0.2.*@dev",
+        "omnipay/common": "~2.0",
         "business-mastery/omnipay-mobilpay": "~1.0",
         "adrianbarbos/mobilpay": "~1.0.0"
     }
@@ -55,7 +55,7 @@ Add the required aliases to the list of class aliases in the same file.
 
 ```php
 ...
-'Omnipay' => Barryvdh\Omnipay\Facade::class,
+'Omnipay' => Omnipay\Omnipay::class,
 'Mobilpay'	=> Adrianbarbos\Mobilpay\Mobilpay::class,
 ...
 ```
@@ -76,9 +76,9 @@ php artisan vendor:publish --provider="Adrianbarbos\Mobilpay\MobilpayServiceProv
 // controller function
 
 Mobilpay::setOrderId(1)
-                ->setAmount('10.00')
-                ->setDetails('Some details')
-                ->purchase();
+        ->setAmount('10.00')
+        ->setDetails('Some details')
+        ->purchase();
 ```
 
 ### Handle Reponse
@@ -88,6 +88,8 @@ Mobilpay::setOrderId(1)
 // controller function
 
 $response = Mobilpay::response();
+
+$data = $response->getData(); //array
 
 switch($response->getMessage())
 {
