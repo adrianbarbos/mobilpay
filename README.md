@@ -27,7 +27,15 @@ Add topics
 
 Add Laravel Localization to your `composer.json` file.
 
-    "adrianbarbos/mobilpay": "1.*"
+```json
+{
+    "require": {
+        ...
+        "adrianbarbos/mobilpay": "~1.0",
+        ...
+    }
+}
+```
 
 Run `composer install` to get the latest version of the package.
 
