@@ -11,6 +11,7 @@ trait DataTrait {
             'details'    => '',
             'confirmUrl' => config('mobilpay.confirm_url'),
             'returnUrl'  => config('mobilpay.return_url'),
+            'cancelUrl'  => config('mobilpay.cancel_url'),
             'testMode'   => config('mobilpay.testMode'),
             'params' => []
         ];
@@ -72,6 +73,16 @@ trait DataTrait {
      */
     public function setReturnUrl($value) {
         $this->data['returnUrl'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param $value string
+     * @return $this
+     */
+    public function setCancelUrl($value) {
+        $this->data['cancelUrl'] = $value;
 
         return $this;
     }
