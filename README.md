@@ -25,23 +25,28 @@ Add topics
 
 ### Composer
 
-Add the package to your `composer.json` file.
+Require the package via composer
+```bash
+composer require adrianbarbos/mobilpay
+```
+
+Or add the package to your `composer.json` file.
 
 ```json
 {
     "require": {
-        "adrianbarbos/mobilpay": "~1.0.0"
+        "adrianbarbos/mobilpay": "^1.0"
     }
 }
 ```
 
-Run `composer update` to get the latest version of the package.
+And run `composer update` to get the latest version of the package.
 
 ### Laravel
 
 Mobilpay comes with a service provider for Laravel. You'll need to add it to your `composer.json` as mentioned in the above steps, then register the service provider with your application.
 
-*From Laravel 5.5, the service provider and facades will automatically get registered.*
+**From Laravel 5.5, the service provider and facades will automatically get registered.**
 
 Open `config/app.php` and find the `providers` key. Add `MobilpayServiceProvider` to the array.
 
