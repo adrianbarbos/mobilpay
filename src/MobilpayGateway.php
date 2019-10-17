@@ -4,27 +4,34 @@ namespace Adrianbarbos\Mobilpay;
 
 use Omnipay\Omnipay;
 
-class MobilpayGateway {
-
+class MobilpayGateway
+{
     protected $data;
 
     use DataTrait;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->initData();
     }
 
-    public function purchase() {
+    public function purchase($autoRedirect = true)
+    {
         $gateway = Omnipay::create('MobilPay');
         $gateway->setMerchantId(config('mobilpay.merchant_id'));
         $gateway->setPublicKey(config('mobilpay.public_key_path'));
 
         $response = $gateway->purchase($this->data)->send();
 
-        $response->redirect();
+        if ($autoRedirect) {
+            $response->redirect();
+        }
+
+        return $response;
     }
 
-    public function response() {
+    public function response()
+    {
         $gateway = Omnipay::create('MobilPay');
         $gateway->setPrivateKey(config('mobilpay.private_key_path'));
 
@@ -33,6 +40,4 @@ class MobilpayGateway {
 
         return $response;
     }
-
 }
-
