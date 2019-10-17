@@ -30,13 +30,16 @@ class MobilpayGateway
         return $response;
     }
 
-    public function response()
+    public function response($autoSendResponse = true)
     {
         $gateway = Omnipay::create('MobilPay');
         $gateway->setPrivateKey(config('mobilpay.private_key_path'));
 
         $response = $gateway->completePurchase($_POST)->send();
-        $response->sendResponse();
+
+        if ($autoSendResponse) {
+            $response->sendResponse();
+        }
 
         return $response;
     }
